@@ -31,7 +31,7 @@ To predict the `MEDV` (Median value of owner-occupied homes in $1000s) using hou
 - Used **Variance Inflation Factor (VIF)** to detect multicollinearity
   - Removed `TAX` due to high redundancy
 
-## 🔍 Model Training & Comparison
+## Model Training & Comparison
 
 ### Classical Model Used:
 
@@ -43,7 +43,7 @@ To predict the `MEDV` (Median value of owner-occupied homes in $1000s) using hou
 - **R² score**
 
 
-## 🧠 Key Insights
+## Key Insights
 
 - **LSTAT** and **RM** are highly predictive of house prices.
 - Handling multicollinearity significantly stabilizes linear models.
