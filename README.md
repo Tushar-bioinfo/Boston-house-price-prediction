@@ -7,25 +7,13 @@ This project walks through a complete regression pipeline—from data preprocess
 ---
 
 
----
+## Overview
 
-## 🚀 Overview
-
-### 📌 Goal
+### Goal
 
 To predict the `MEDV` (Median value of owner-occupied homes in $1000s) using housing features such as crime rate, number of rooms, tax rate, etc.
 
-### 💡 Highlights
-
-- End-to-end machine learning workflow
-- Applied linear and non-linear models
-- Feature selection & multicollinearity handling using VIF
-- Performance evaluation using RMSE, MAE, R²
-- Deep learning regression with Keras for comparative analysis
-
----
-
-## 🧹 Data Preprocessing
+## Data Preprocessing
 
 - Loaded `housing.csv` into a Pandas DataFrame
 - Checked for missing/null values
@@ -34,7 +22,7 @@ To predict the `MEDV` (Median value of owner-occupied homes in $1000s) using hou
 
 ---
 
-## 📊 Exploratory Data Analysis
+## Exploratory Data Analysis
 
 - Explored relationships using:
   - Correlation heatmaps
@@ -43,48 +31,21 @@ To predict the `MEDV` (Median value of owner-occupied homes in $1000s) using hou
 - Used **Variance Inflation Factor (VIF)** to detect multicollinearity
   - Removed `TAX` due to high redundancy
 
-### 📈 Correlation Heatmap  
-![Correlation Heatmap](plots/correlation_heatmap.png)
-
----
-
 ## 🔍 Model Training & Comparison
 
-### Classical Models Used:
+### Classical Model Used:
 
 - Linear Regression
-- Ridge & Lasso
-- Random Forest
-- XGBoost
 
 ### Evaluation Metrics:
 
 - **RMSE**
-- **MAE**
 - **R² score**
 
-🏆 **Best Model**: **XGBoost**  
-**RMSE ≈ 2.8**, **R² ≈ 0.83**
-
-### 🔧 Deep Learning Model (Keras)
-
-- Simple MLP: Dense layers with ReLU activations and dropout
-- Slightly lower performance than XGBoost but valuable for experimentation
-
----
 
 ## 🧠 Key Insights
 
 - **LSTAT** and **RM** are highly predictive of house prices.
 - Handling multicollinearity significantly stabilizes linear models.
-- Ensemble methods like XGBoost outperform linear models by capturing non-linearities.
-- Deep learning requires more hyperparameter tuning for structured/tabular data.
 
----
 
-## 🛠️ Setup Instructions
-
-Install required packages:
-
-```bash
-pip install -r requirements.txt
