@@ -1,51 +1,70 @@
-# Boston-house-price-prediction
+#  Boston House Price Prediction
 
-**Predicting the median home value using classical and deep learning models on the Boston Housing dataset.**
-
-This project walks through a complete regression pipeline—from data preprocessing to model training and evaluation. It's beginner-friendly, structured for reproducibility, and demonstrates both classical ML (e.g., Linear Regression, XGBoost) and deep learning techniques (via Keras).
+This project presents an end-to-end workflow for understanding and predicting Boston housing prices using multiple linear regression. The dataset originates from the UCI Machine Learning Repository (via CMU), and the analysis is designed to explore data patterns, evaluate predictors, and deploy a custom-built price estimator with confidence intervals.
 
 ---
 
+##  Project Objectives
 
-## Overview
-
-### Goal
-
-To predict the `MEDV` (Median value of owner-occupied homes in $1000s) using housing features such as crime rate, number of rooms, tax rate, etc.
-
-## Data Preprocessing
-
-- Loaded `housing.csv` into a Pandas DataFrame
-- Checked for missing/null values
-- Scaled numeric features using `StandardScaler`
-- Split into training (80%) and test (20%) sets
+- Conduct in-depth exploratory data analysis (EDA) to understand Boston housing trends.
+- Develop and validate linear regression models (standard and log-transformed).
+- Evaluate model assumptions using VIF, residual plots, and BIC.
+- Create a property price estimator that incorporates today's inflation and user-defined confidence.
 
 ---
 
-## Exploratory Data Analysis
+##  Exploratory Data Analysis
 
-- Explored relationships using:
-  - Correlation heatmaps
-  - Boxplots and scatterplots
-- Found **LSTAT** (% low-status population) and **RM** (number of rooms) as most influential features
-- Used **Variance Inflation Factor (VIF)** to detect multicollinearity
-  - Removed `TAX` due to high redundancy
+The EDA covered the following key analyses:
 
-## Model Training & Comparison
+- **Distributions**: House prices, number of rooms, LSTAT, access to highways, etc.
+- **Correlations**: Heatmaps, pairplots, and jointplots were used to understand relationships.
+- **Multicollinearity**: Variance Inflation Factor (VIF) was used to evaluate redundant predictors.
+- **Feature Transformations**: Log transformation of prices to normalize skewed distribution.
+- **Model Simplification**: Based on BIC and p-values, features like `INDUS` and `AGE` were removed.
 
-### Classical Model Used:
+---
 
-- Linear Regression
+##  Modeling Workflow
 
-### Evaluation Metrics:
+We implemented multivariable regression using both raw and log-transformed price targets. Key steps included:
 
-- **RMSE**
-- **R² score**
+1. **Model Training**:
+    ```python
+    regr = LinearRegression()
+    regr.fit(x_train, y_train)
+    ```
 
+2. **Model Evaluation**:
+    ```python
+    r2_train = regr.score(x_train, y_train)
+    r2_test = regr.score(x_test, y_test)
+    ```
 
-## Key Insights
+3. **Statsmodels for Interpretability**:
+    ```python
+    model = sm.OLS(y_train, sm.add_constant(x_train)).fit()
+    model.summary()
+    ```
 
-- **LSTAT** and **RM** are highly predictive of house prices.
-- Handling multicollinearity significantly stabilizes linear models.
+4. **Prediction Function**:
+    Custom estimator using number of rooms, proximity to river, and confidence level:
+    ```python
+    get_log_estimate(rooms_num=3, next_2_river=True, high_confidence=True)
+    ```
+
+5. **Scaling Estimates**:
+    Adjusted predictions to reflect current market values using inflation scaling.
+
+---
+
+##  Residual & Diagnostic Testing
+
+tested for:
+
+- Residual skewness and normality
+- Homoscedasticity of residuals
+- Predicted vs. actual performance
+- Prediction intervals using log-scale ± 2×RMSE
 
 
