@@ -1,6 +1,6 @@
 #  Boston House Price Prediction
 
-This project presents an end-to-end workflow for understanding and predicting Boston housing prices using multiple linear regression. The dataset originates from the UCI Machine Learning Repository (via CMU), and the analysis is designed to explore data patterns, evaluate predictors, and deploy a custom-built price estimator with confidence intervals.
+This project presents an end-to-end workflow for understanding and predicting Boston housing prices using multivariable linear regression. The dataset originates from the UCI Machine Learning Repository (via CMU), and the analysis is designed to explore data patterns, evaluate predictors, and deploy a custom-built price estimator with confidence intervals.
 
 ---
 
