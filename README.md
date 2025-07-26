@@ -83,7 +83,7 @@ docker build -t boston-housing .
 This creates a Docker image named `boston-housing`.
 
 ---
-
+ 
 ### Step 2: Run Jupyter Lab Inside the Container
 
 ```bash
@@ -92,5 +92,17 @@ docker run --rm -p 8888:8888 boston-housing
 
 After the container starts, open the URL shown in the terminal (e.g., `http://localhost:8888`) to access Jupyter Lab. The notebooks are located in the `/notebook/` directory.
 
+### File Access
+
+To keep notebook and plot outputs synced with your local machine, mount your folders like so:
+
+```bash
+docker run --rm -p 8888:8888 \
+  -v $(pwd)/notebook:/app/notebook \
+  -v $(pwd)/plots:/app/plots \
+  boston-housing
+```
+
+This ensures all changes and results remain persistent on your system.
 
 
