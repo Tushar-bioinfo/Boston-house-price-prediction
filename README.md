@@ -67,7 +67,8 @@ tested for:
 - Predicted vs. actual performance
 - Prediction intervals using log-scale ± 2×RMSE
 
-  ## Run with Docker
+
+## Run with Docker
 
 This project is fully containerized for reproducibility. The Dockerfile installs Python, Jupyter Lab, and all required libraries listed in `requirements.txt`.
 
